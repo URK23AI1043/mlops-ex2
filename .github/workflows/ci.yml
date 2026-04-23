@@ -1,0 +1,17 @@
+name: lab
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@4
+        with:
+          python-version: "3.9"
+      - run: pip install -r requirements.txt
+      - run: pytest
